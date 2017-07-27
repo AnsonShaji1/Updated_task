@@ -1,0 +1,124 @@
+{% extends 'base.html'%}
+
+	{% block style %}
+		<style>
+
+
+			#selector:link, #selector:visited {
+			    background-color: #f44336;
+			    color: white;
+			    padding: 10px 15px;
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			}
+
+			#selector:hover, #selector:active {
+			    background-color: red;
+			}
+
+			table {
+			    border-collapse: collapse;
+			    width: 50%;
+			    margin: auto;
+			}
+
+			th, td {
+			    text-align: center;
+			    padding: 8px;
+			}
+
+			tr:nth-child(even){background-color: #f2f2f2}
+
+			th {
+			    background-color: #4CAF50;
+			    color: white;
+			}
+
+			body{
+				background: #c3dcc9;
+			}
+		</style>
+	{% endblock style %}
+
+	{% block home-sub-title %}
+		<a class="navbar-brand" href="#">Users</a>
+	{% endblock home-sub-title %}
+
+
+	{% block user_first_login %}
+		{% if obj.per_create == 'True' or obj.per_create == True %}
+			<li><a href="/project/add">Add New Project</a></li>
+		{% endif %}
+	{% endblock user_first_login %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+	{% block title %}
+		<h4>Username : {{ request.user }}</h4>
+	{% endblock title %}
+
+
+
+
+<table>
+  <tr>
+    <th>Username</th>
+  </tr>
+  <tr>
+    <td>
+    </td>
+  </tr>
+  <tr>
+  <td><a href="default.asp">This is a link</a>
+  <a href="default.asp" target="_blank">This is a link</a>
+  </td>
+  </tr>
+  
+</table>
+
+
+
+
+
+
+	{% block content %}
+		{% if obj.per_read == 'True' or obj.per_read == True %}
+
+			{% if post %}
+				{% for i in post %}
+					<table>
+						<tr>
+							<th>{{ i.title }}</th>
+						</tr>
+						<tr>
+							<td>{{ i.text }}</td>
+						</tr>
+						<tr>
+							<td>
+
+								{% if obj.per_edit == 'True' or obj.per_edit == True %}
+									<a href="{% url 'post_edit' pk=i.pk %}" id="selector">Edit</a>
+								{% endif %}
+
+								{% if obj.per_delete == 'True' or obj.per_delete == True %}
+									<a href="{% url 'post_delete' pk=i.pk %}" id="selector">Delete</a>
+								{% endif %}
+
+							</td>
+						</tr>
+					</table>
+					<p></p>
+					<br />
+
+				{% endfor %}
+			{% endif %}
+
+		{% endif %}
+	{% endblock content %}

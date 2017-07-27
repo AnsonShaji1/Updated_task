@@ -1,0 +1,75 @@
+{% extends 'base.html'%}
+
+	{% block style %}
+	<style type="text/css">
+
+		.form-signin {
+		max-width: 300px;
+		padding: 19px 29px 29px;
+		margin: 0 auto 20px;
+		background-color: #fff;
+		border: 1px solid #e5e5e5;
+		-webkit-border-radius: 5px;
+		   -moz-border-radius: 5px;
+		        border-radius: 5px;
+		-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		}
+
+		body{
+			background-color: #c3dcc9;
+		}
+
+		.jumbotron h1{
+			font-family: sans-serif;
+			font-weight:550;
+			color: #6a5673;
+			font-size: 63px;
+		}
+
+
+		.jumbotron {
+			background-color: #06d2c1;
+		}
+	</style>
+	{% endblock style %}
+
+
+	{% block home-sub-title %}		
+		<a class="navbar-brand" href="#">Admin</a>
+	{% endblock home-sub-title %}
+
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			
+			<li><a href="/users">User</a></li>
+			<li class="active"><a href="/controller/login">Admin</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+
+	{% block user_first_login %}
+		<li><a href="/">Home</a></li>
+	{% endblock user_first_login %}
+
+	{% block title %}
+		<div class="jumbotron">
+			<center><h1>WELCOME TO ADMIN</h1></center>
+		</div>
+	{% endblock title %}
+
+
+
+
+
+	{% block form %}
+		<form action='' method="POST" enctype="multipart/form-data" class="form-signin" >{% csrf_token %}
+			<h4>{{title}}</h4>
+			{{form.as_p}}
+			<button class="btn btn-small btn-primary" type="submit">Submit</button>
+		</form>
+	{% endblock form %}

@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+	{% block style %}
+		<style>
+			body{
+			background-color: #c3dcc9;
+		}
+		h3 {
+		width: 292px;
+		height: 56px;
+		top: 232px;
+		bottom: 90px;
+		position: relative;
+		right: -367px;
+		}
+		</style>
+	{% endblock style %}
+
+	{% block user_first_login %}
+		<li><a href="/">Home</a></li>
+	{% endblock user_first_login %}
+
+
+	{% block content %}
+		<h3>You are successfully logout</h3>
+	{% endblock content %}

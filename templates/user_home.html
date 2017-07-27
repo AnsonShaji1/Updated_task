@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+
+	{% block style %}
+		<style>
+			body{
+			background-color: #c3dcc9;
+		}
+
+		
+		</style>
+	{% endblock style %}
+
+
+
+	{% block home-sub-title %}
+		<a class="navbar-brand" href="#">Users</a>
+	{% endblock home-sub-title %}
+
+
+	{% block user_first_login %}
+		<li><a href="/">Home</a></li>
+		<li><a href="/register">Register</a></li>
+		<li><a href="/login">Login</a></li>
+	{% endblock user_first_login %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			
+			<li class="active"><a href="/users">User</a></li>
+			<li><a href="/controller/login">Admin</a></li>
+		</ul>
+	{% endblock home-nav %}
+	
+
+	{% block title %}
+		<div class="jumbotron">
+    		<h1>WELCOME TO USERS</h1>
+    		<p></p>
+			<p>
+				<a class="btn btn-lg btn-primary" href="/login/" role="button">Please login here &raquo;</a>
+			</p>
+  		<div>
+	{% endblock title %}
+

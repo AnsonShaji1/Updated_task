@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+
+	{% block style %}
+		<style>
+			body{
+				background-color: aliceblue;
+			}
+			.add {
+			width: 411px;
+			height: 341px;
+			background: aliceblue;
+			position: relative;
+			top: 52px;
+			bottom: 32px;
+			left: 288px;
+			right: 330px;
+			}
+			h3{
+				position: relative;
+				top:40px;
+				bottom: 40px;
+				left:224px;
+				right: 45px;
+			}
+
+		</style>
+	{% endblock style %}
+
+	{% block home-sub-title %}
+		<a class="navbar-brand" href="#">{{ request.user }}</a>
+	{% endblock home-sub-title %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+	{% block user_first_login %}
+	<li class="active"><a href="/project/add">Add New Project</a></li>
+	{% endblock user_first_login %}
+
+	{% block title %}
+		<h3>New Post</h3>
+	{% endblock title %}
+
+
+	{% block content %}
+		<div class="add">
+			<br />
+			<div>
+				<form method="POST" enctype='multipart/form-data'>{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit">Save</button>
+				</form>
+			</div>
+		</div>
+	{% endblock content %}

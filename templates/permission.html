@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+	{% block style %}
+		<style>
+			body{
+				background-color: aliceblue;
+				}
+				.permission{
+					width: 213px;
+					height: 250px;
+					background: aliceblue;
+					position: relative;
+					top: 38px;
+					bottom: 32px;
+					left: 399px;
+					right: 330px;
+				}
+
+				input[type=checkbox], input[type=radio] {
+					margin: 15px 14px 0;
+				}
+
+				.heading {
+					width: 213px;
+					height: 81px;
+					background: aliceblue;
+					position: relative;
+					top: 52px;
+					bottom: 32px;
+					left: 286px;
+					right: 330px;
+				}
+		</style>
+	{% endblock style %}
+
+
+	{% block title %}
+		<div class="heading">
+			<h3>Permission</h3>
+			<h5>Chose your option</h5>
+		</div>
+	{% endblock title %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+	{% block content %}
+		<div class="permission">
+				<form action='' method="POST" enctype="multipart/form-data">{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit">Save</button>
+				</form>
+		</div>
+	{% endblock content %}

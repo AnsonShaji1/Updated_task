@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+
+	{% block style %}
+	<style type="text/css">
+
+		.form-signin {
+		max-width: 300px;
+		padding: 19px 29px 29px;
+		margin: 0 auto 20px;
+		background-color: #fff;
+		border: 1px solid #e5e5e5;
+		-webkit-border-radius: 5px;
+		   -moz-border-radius: 5px;
+		        border-radius: 5px;
+		-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		}
+
+		.userlogin{
+			width: 500px;
+			height: 300px;
+			position:relative;
+			top:20px;
+			bottom: :60px;
+			margin:auto;
+		}
+
+		body{
+			background-color: #c3dcc9;
+		}
+
+		
+	</style>
+	{% endblock style %}
+
+
+	{% block home-sub-title %}		
+		<a class="navbar-brand" href="#">Users</a>
+	{% endblock home-sub-title %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+
+			<li><a href="/users">User</a></li>
+			<li><a href="/controller/login">Admin</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+	{% block user_first_login %}
+		<li><a href="/">Home</a></li>
+		<li><a href="/register">Register</a></li>
+		<li class="active"><a href="/login">Login</a></li>
+	{% endblock user_first_login %}
+
+	{% block sub-content %}
+		<center><h3>Please login here</h3></center>
+	{% endblock sub-content %}
+
+
+	{% block form %}
+		<div class="userlogin">
+			<form action='' method="POST" enctype="multipart/form-data" class="form-signin" >{% csrf_token %}
+				<h4>{{title}}</h4>
+				{{form.as_p}}
+				<button class="btn btn-small btn-primary" type="submit">Login</button>
+		</form>
+		</div>
+	{% endblock form %}

@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+	{% block style %}
+
+		<style>
+		table {
+		    border-collapse: collapse;
+		    width: 50%;
+		    margin:auto;
+		}
+
+		th, td {
+		    text-align: center;
+		    padding: 8px;
+		}
+
+		tr:nth-child(even){background-color: #f2f2f2}
+
+		th {
+		    background-color: #4CAF50;
+		    color: white;
+		}
+		</style>
+	{% endblock style %}
+
+
+	{% block title %}
+		<h3>ADMIN PAGE</h3>
+	{% endblock title %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+	{% block content %}
+		<table>
+			<tr>
+				<th>Username</th>
+			</tr>
+			{% for i in members %}
+				{% if i.username != 'admin' %}
+					<tr>
+						<td><a href="{% url 'permission_member' pk=i.pk %}">{{ i.username }}</a></td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+		</table>
+	{% endblock content %}

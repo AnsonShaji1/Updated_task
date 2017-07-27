@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+
+	{% block style %}
+		<style>
+			body{
+				background-color: #c3dcc9;
+			}
+			h1{
+				font-family: sans-serif;
+				font-weight:550;
+				color: #6a5673;
+			}
+
+
+
+			.jumbotron {
+    						background-color: #06d2c1;
+						}
+			.jumbotron h1 {
+							font-size: 63px;
+							}
+		</style>
+
+	{% endblock style %}
+
+	{% block user_first_login %}
+		<li class="active"><a href="/">Home</a></li>
+	{% endblock user_first_login %}
+
+	{% block home-sub-title %}
+	<a class="navbar-brand" href="#">Projects</a>
+	{% endblock home-sub-title %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/users">Users</a></li>
+			<li><a href="/controller/login">Admin</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+	{% block title %}
+		<div class="jumbotron">
+    		<center><h1>PROJECT COLLECTIONS</h1><center>
+  		</div>
+	{% endblock title %}
+
+
+
