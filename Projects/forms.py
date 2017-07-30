@@ -63,17 +63,17 @@ class PostForm(forms.ModelForm):
         fields = ('title','text')
 
 
-class PermissionForm(forms.ModelForm):
-	per_read = forms.BooleanField(initial=False, required=False,label="Read")
-	per_edit = forms.BooleanField(initial=False, required=False,label="Edit")
-	per_delete = forms.BooleanField(initial=False, required=False,label="Delete")
-	per_create = forms.BooleanField(initial=False, required=False,label="Create")
+# class PermissionForm(forms.ModelForm):
+# 	per_read = forms.BooleanField(initial=False, required=False,label="Read")
+# 	per_edit = forms.BooleanField(initial=False, required=False,label="Edit")
+# 	per_delete = forms.BooleanField(initial=False, required=False,label="Delete")
+# 	per_create = forms.BooleanField(initial=False, required=False,label="Create")
 
-	class Meta:
-		model = PermissionAdmin
-		fields = [
-					'per_read',
-					'per_edit',
-					'per_delete',
-					'per_create',
-				]
+# 	class Meta:
+# 		model = PermissionAdmin
+# 		fields = [
+# 					'per_read',
+# 					'per_edit',
+# 					'per_delete',
+# 					'per_create',
+# 				]

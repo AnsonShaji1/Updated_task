@@ -1,0 +1,124 @@
+{% extends 'base.html'%}
+
+<!DOCTYPE html>
+<html>
+<head>
+{% block style %}
+<style>
+table {
+
+    border-collapse: collapse;
+    width: 100%;
+    margin: :auto;
+    
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button{
+	float:right;
+}
+</style>
+{% endblock style %}
+
+	{% block script2 %}
+		<script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+	{% endblock script2 %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+</head>
+<body>
+{% block form %}
+<h2>Permission</h2>
+
+	<table>
+		<tr>
+			<th>Username</th>
+			<th>Read</th>
+			<th>Edit</th>
+			<th>Delete</th>
+			<th>Create</th>
+		</tr>
+
+
+		<form  action='' method="POST" enctype="multipart/form-data">{% csrf_token %}
+		{% for i in members %}
+			<div class="form-inline">
+				<input type="hidden" class="form-control" placeholder="Text input" value={{i.author}} name="author">
+			</div>
+
+		<tr>
+			<td>{{i.author}}</td>
+			<td><input type="checkbox" value={{i.author}} name="per_read"></td>
+			<td><input type="checkbox" value={{i.author}} name="per_edit"></td>
+			<td><input type="checkbox" value={{i.author}} name="per_delete"></td>
+			<td><input type="checkbox" value={{i.author}} name="per_create"></td>
+		</tr>
+		{% endfor %}
+		</table>
+		<button type="submit" class="btn btn-default" id="button">Save</button>
+
+		</form>
+
+</body>
+</html>
+
+{% endblock form %}
+
+
+{% block script %}
+
+	<script type="text/javascript">
+		function initialCheck() {
+			debugger;
+			var data = {{json|safe}}
+			// data[0]["fields"].ATTRIBUTE
+			// cosole.log(data[0]["fields"]);
+
+			for (i = 0; i < data.length; i++) { 
+				if(data[i]["fields"]["per_read"]){
+					$('input:checkbox[name="per_read"][value="' + data[i]["fields"]["author"] + '"]')
+					.attr('checked', 'checked');
+				}
+
+				if(data[i]["fields"]["per_edit"]){
+					$('input:checkbox[name="per_edit"][value="' + data[i]["fields"]["author"] + '"]')
+					.attr('checked', 'checked');
+				}
+
+				if(data[i]["fields"]["per_delete"]){
+					$('input:checkbox[name="per_delete"][value="' + data[i]["fields"]["author"] + '"]')
+					.attr('checked', 'checked');
+				}
+
+				if(data[i]["fields"]["per_create"]){
+					$('input:checkbox[name="per_create"][value="' + data[i]["fields"]["author"] + '"]')
+					.attr('checked', 'checked');
+				}
+
+			}
+
+			}
+			window.onload = initialCheck;
+	</script>
+
+{% endblock script %}
+
+

@@ -17,5 +17,7 @@ urlpatterns = [
 	url(r'^project/(?P<pk>\d+)/delete/$',views.post_delete,name='post_delete'),
 
 	url(r'^controller/login/',views.admin_login,name="admin_login"),
-	url(r'^permission/(?P<pk>\d+)/',views.permission_member,name='permission_member'),
+	# url(r'^permission/(?P<pk>\d+)/',views.permission_member,name='permission_member'),
+    url(r'^admin_content/(?P<pk>\d+)/',views.admin_content,name='admin_content'),
+    # url(r'^admin_content/',views.admin_content,name='admin_content'),
 ]

@@ -26,6 +26,9 @@
     
     {% endblock style %}
 
+
+    {% block script2 %}
+    {% endblock script2 %}
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/static/js/ie-emulation-modes-warning.js"></script>
@@ -97,7 +100,8 @@
       {% endblock content %}
     </div> <!-- /container -->
 
-
+      {% block script %}
+      {% endblock script %}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

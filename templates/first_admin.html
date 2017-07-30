@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+
+{% block style %}
+		<style>
+			body{
+			background-color: #c3dcc9;
+		}
+
+		
+		</style>
+	{% endblock style %}
+
+
+
+	{% block home-sub-title %}
+		<a class="navbar-brand" href="#">Admin</a>
+	{% endblock home-sub-title %}
+
+
+	{%block home-nav %}
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+	{% endblock home-nav %}
+
+
+
+	{% block user_first_login %}
+		<li><a href="{% url 'admin_content' pk=admin_user.pk %}">Permission</a></li>
+	{% endblock user_first_login %}
+
+
+
+	{% block title %}
+		<div class="jumbotron">
+			<h1>WELCOME TO ADMIN</h1>
+		<p></p>
+		<p>
+		<a class="btn btn-lg btn-primary" href="{% url 'admin_content' pk=admin_user.pk %}" role="button">Permission &raquo;</a>
+		</p>
+		<div>
+	{% endblock title %}
