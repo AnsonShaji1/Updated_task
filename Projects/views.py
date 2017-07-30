@@ -177,7 +177,7 @@ def admin_content(request,pk):
 				json_data = serializers.serialize("json",PermissionAdmin.objects.all())
 				return render(request, 'admin_page1.html', {'members': PermissionAdmin.objects.all(),"json" : json_data })
 		else:
-			pass
+			return render(request, 'admin_page1.html',{'members': PermissionAdmin.objects.all()})
 	else:
 		return HttpResponse("Page not found")
 

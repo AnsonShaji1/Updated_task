@@ -47,35 +47,36 @@ button{
 <body>
 {% block form %}
 <h2>Permission</h2>
+	{% if members %}
+		<table>
+			<tr>
+				<th>Username</th>
+				<th>Read</th>
+				<th>Edit</th>
+				<th>Delete</th>
+				<th>Create</th>
+			</tr>
 
-	<table>
-		<tr>
-			<th>Username</th>
-			<th>Read</th>
-			<th>Edit</th>
-			<th>Delete</th>
-			<th>Create</th>
-		</tr>
 
+			<form  action='' method="POST" enctype="multipart/form-data">{% csrf_token %}
+			{% for i in members %}
+				<div class="form-inline">
+					<input type="hidden" class="form-control" placeholder="Text input" value={{i.author}} name="author">
+				</div>
 
-		<form  action='' method="POST" enctype="multipart/form-data">{% csrf_token %}
-		{% for i in members %}
-			<div class="form-inline">
-				<input type="hidden" class="form-control" placeholder="Text input" value={{i.author}} name="author">
-			</div>
+			<tr>
+				<td>{{i.author}}</td>
+				<td><input type="checkbox" value={{i.author}} name="per_read"></td>
+				<td><input type="checkbox" value={{i.author}} name="per_edit"></td>
+				<td><input type="checkbox" value={{i.author}} name="per_delete"></td>
+				<td><input type="checkbox" value={{i.author}} name="per_create"></td>
+			</tr>
+			{% endfor %}
+			</table>
+			<button type="submit" class="btn btn-default" id="button">Save</button>
 
-		<tr>
-			<td>{{i.author}}</td>
-			<td><input type="checkbox" value={{i.author}} name="per_read"></td>
-			<td><input type="checkbox" value={{i.author}} name="per_edit"></td>
-			<td><input type="checkbox" value={{i.author}} name="per_delete"></td>
-			<td><input type="checkbox" value={{i.author}} name="per_create"></td>
-		</tr>
-		{% endfor %}
-		</table>
-		<button type="submit" class="btn btn-default" id="button">Save</button>
-
-		</form>
+			</form>
+	{%endif%}
 
 </body>
 </html>
